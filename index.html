@@ -1,0 +1,368 @@
+<html>
+	<head>
+		<title>stopwatch and timer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+	
+		*{
+			margin:0;
+			padding:0;
+			background-color:#FF9900;
+			}
+		.heading{
+				padding:3% 15%;
+				margin:0px 5px;
+				background-color:grey;
+				display:inline-block;
+				width:45%;
+				}
+			.header{
+				display:flex;
+				flex-direction:row;
+				margin:10px 0;
+				background-color:grey;
+				}
+			button{
+				border-width:1px;
+				border-radius:4px;
+				margin:0 5%;
+				padding:5px;
+				border-style:none;
+				display:inline-block;
+				background-color:#00FF9D;
+				}
+			p{
+				text-align:center;
+				margin:10px;
+				}
+			div{
+				margin:0% 0;
+				}
+			.time{
+				margin:15% 0;
+				font-weight:bold;
+				font-size:30px;
+				}
+			input{
+				width:10%;
+				height:6%;
+				border-radius:2px;
+				padding-top:10px;
+				background-color:white;
+				}
+			input:hover{
+				width:10%;
+				height:6%;
+				border-radius:2px;
+				padding-top:10px;
+				background-color:white;
+				}
+			input:focus{
+				width:10%;
+				height:6%;
+				border-radius:2px;
+				padding-top:10px;
+				background-color:white;
+				}
+			
+			@media only screen and (min-width:300px) and (max-width:600px)
+			{
+				
+			}
+		</style>
+	</head>
+	<body onload="initial()">
+		<div class="header">
+		   <span class="heading" onclick="timer()">Timer</span>
+		   <span class="heading" onclick="stopwatch()">Stopwatch</span>
+		</div>
+		<div id="timer">
+			<p class="time"><input type="number" id="input-hour"><span id="thour" onclick="input()">00</span>:<input type="number" id="input-minute"><span id="tminute" onclick="input()">00</span>:<input type="number" id="input-second"><span id="tsecond" onclick="input()">00</span></p>
+			<p>
+			<button onclick="tstart()">Start</button>
+			<button onclick="tpause()">Pause</button>
+			<button onclick="treset()">Reset</button>
+			</p>
+			<p>click on the "00" to set the value inside timer and then click the button to start the timer</p>
+		</div>
+		
+		
+		
+		
+		<div id="stopwatch">
+			<p class="time"><input hidden><span id="hour">00</span>:<input hidden ><span id="minute">00</span>:<input hidden id=><span id="second">00</span>:<input hidden id=><span id="millisecond">00</span></p>
+			<p>
+			<button onclick="start()">Start</button>
+			<button onclick="pause()">Pause</button>
+			<button onclick="reset()">Reset</button>
+			</p>
+		</div>
+	</body>
+	
+		<script>
+			var milliseconds = 0 ;
+			var second  = 0 ;
+			var minute = 0 ;
+			var hour  = 0 ;
+			var thour  = 0 ;
+			var tsecond = 0 ;
+			var tminute  = 0 ;
+			var a ;
+			var b ;
+			var c ;
+			var d ;
+			var e;
+			var f;
+			var g;
+				
+			initial = function ()
+			{
+				
+				
+				document.getElementById("stopwatch").style.display = "none";
+				document.getElementById("timer").style.display = "" ;
+                
+                document.getElementById("input-hour").style.display = "none";
+				document.getElementById("input-minute").style.display = "none" ;
+                document.getElementById("input-second").style.display = "none";
+                
+                document.getElementById("input-hour").value = "00" ;
+                document.getElementById("input-minute").value = "00" ;
+                document.getElementById("input-second").value = "00" ;
+
+			}
+			
+			
+			input = function ()
+			{
+				
+				
+				document.getElementById("input-hour").style.display = "";
+				document.getElementById("input-minute").style.display = "" ;
+                document.getElementById("input-second").style.display = "";
+                
+                document.getElementById("thour").style.display = "none";
+				document.getElementById("tminute").style.display = "none" ;
+                document.getElementById("tsecond").style.display = "none";
+                
+                document.getElementById("input-hour").value = thour ;
+                document.getElementById("input-minute").value = tminute ;
+                document.getElementById("input-second").value = thour ;
+                
+                document.getElementById("input-hour").innerHTML = thour ;
+                document.getElementById("input-minute").innerHTML = tminute ;
+                document.getElementById("input-second").innerHTML = tsecond ;
+                
+                
+			}
+			
+			
+			timer = function ()
+			{
+				
+				
+				document.getElementById("stopwatch").style.display = "none";
+				document.getElementById("timer").style.display = "" ;
+				
+				
+			}
+			
+			
+			stopwatch = function ()
+			{
+				
+				
+				document.getElementById("stopwatch").style.display = "" ;
+                document.getElementById("timer").style.display = "none" ;
+                
+                
+			}
+			
+			
+			tstart = function ()
+			{
+				
+				
+				thour = document.getElementById("input-hour").value;
+				document.getElementById("input-hour").value = "00" ;
+				if( thour == undefined || thour.length == 0 || thour == null )
+				{
+					thour = 00;
+				}
+				tminute = document.getElementById("input-minute").value;
+				document.getElementById("input-minute").value = "00" ;
+				if( tminute == undefined || tminute.length == 0 )
+				{
+					tminute = 00;
+				}
+				tsecond = document.getElementById("input-second").value;
+				document.getElementById("input-second").value = "00" ;
+				if( tsecond == undefined || tsecond.length == 0 )
+				{
+					tsecond = 00;
+				}
+				
+				document.getElementById("thour").style.display = "";
+				document.getElementById("tminute").style.display = "" ;
+                document.getElementById("tsecond").style.display = "";
+                
+                document.getElementById("input-hour").style.display = "none";
+				document.getElementById("input-minute").style.display = "none" ;
+                document.getElementById("input-second").style.display = "none";
+                
+               document.getElementById("thour").innerHTML = thour ;
+               document.getElementById("tminute").innerHTML = tminute ;
+               document.getElementById("tsecond").innerHTML = tsecond ;
+               
+              if ( tminute == 0  && thour == 0 && tsecond == 0 )
+				{
+					treset();
+					alert("Please enter the time");
+				}
+			else{
+               e = setInterval(function ()
+                {
+                	tsecond -=1;
+                    if(tsecond == 0)
+                    {
+                        if( tminute == 0 && thour == 0)
+                       {
+                       	
+                       	clearInterval(e);
+                           alert("countdown is over");
+                        }
+                        else
+                        {
+                           tsecond =60;
+                         }
+                    }
+                    document.getElementById("tsecond").innerHTML = tsecond ;
+                },1000);
+                f = setInterval(function ()
+                {	
+                    if( tsecond == 0 || tsecond == 60 )
+                    {
+                    	if( tminute >=1 )
+                        {
+                        	tminute -= 1 ;
+                        }
+                        
+                    }
+                    document.getElementById("tminute").innerHTML = tminute ;
+                },1000);
+                g = setInterval(function ()
+                {
+                	if( tminute == 0 || tminute == 60)
+                    {
+                    	if( thour >= 1)
+                        {
+                        	thour -= 1 ;
+                        }
+                    }
+                    document.getElementById("thour").innerHTML = thour ;
+                },60000);
+                }
+				
+				
+			}
+			treset = function ()
+			{
+				tpause();
+				document.getElementById("thour").innerHTML = "00" ;
+				document.getElementById("tminute").innerHTML = "00" ;
+				document.getElementById("tsecond").innerHTML = "00 ";
+			}
+			
+			
+			tpause = function ()
+           {
+           	
+           
+				clearInterval(e);
+				clearInterval(f);
+				clearInterval(g);
+				
+				
+                
+                
+			}
+			
+			
+			start = function ()
+			{
+				
+				
+				 a = setInterval(function () {
+				milliseconds += 1 ;
+				if ( milliseconds == 100 )
+				{
+					milliseconds = 0 ;
+				}
+                document.getElementById("millisecond").innerHTML = milliseconds ; } , 10 );
+				
+				
+                 b = setInterval(function () {
+				second += 1 ;
+				if ( second == 60 )
+				{
+					second = 0 ;
+				}
+                document.getElementById("second").innerHTML = second ;},1000);
+                
+                
+                 c = setInterval(function () {
+				minute += 1 ;
+				if ( minute == 60)
+				{
+					minute = 0 ;
+				}
+                document.getElementById("minute").innerHTML = minute ;},60000);
+                
+                
+                d = setInterval(function () {
+				hour +=1;
+				if ( hour == 24)
+				{
+					hour = 0 ;
+				}
+                document.getElementById("hour").innerHTML = hour ;},3600000);
+                
+                
+                
+			}
+			
+			
+			
+			pause = function ()
+			{
+				
+				
+				clearInterval(a);
+				clearInterval(b);
+				clearInterval(c);
+				clearInterval(d);
+				
+				
+			}
+			
+			
+			reset = function ()
+			{
+				
+				
+				milliseconds = 0 ;
+				second = 0 ;
+				minute = 0 ;
+				hour = 0 ;
+				
+				
+				pause();
+				document.getElementById("second").innerHTML = "00" ;
+				document.getElementById("hour").innerHTML = "00" ;
+				document.getElementById("minute").innerHTML = "00" ;
+				document.getElementById("millisecond").innerHTML = "00" ;
+				
+				
+			}
+		</script>
+</html>
